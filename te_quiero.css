@@ -1,0 +1,124 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #fb9898;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+/* Palabras cayendo – AHORA ENCIMA DE TODO */
+.love-word {
+    position: fixed;
+    top: -50px;
+    animation: fall linear infinite;
+    pointer-events: none;
+    text-shadow: 0 0 10px red;
+    z-index: 999; /* ⬅⬅⬅ EFECTOS ARRIBA */
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+/* Explosión – TAMBIÉN ARRIBA */
+.explosion {
+    position: fixed;
+    animation: explode 1.8s ease-out forwards;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 999; /* ⬅⬅⬅ TAMBIÉN ARRIBA */
+}
+
+@keyframes explode {
+    0% { transform: translate(0,0) scale(1); opacity: 1; }
+    100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+}
+
+/* Tabla de imágenes */
+.img-table-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Imágenes */
+table img {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 0 15px pink;
+    transition: transform 0.2s;
+    z-index: 1; /* ⬅⬅⬅ ABAJO DE LOS EFECTOS */
+}
+
+table img:hover {
+    transform: scale(1.08);
+}
+
+/* Botones románticos */
+.romantic-btn {
+    background: #ff4081;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 25px;
+    font-size: 18px;
+    margin: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    z-index: 1000; /* botones sobre todo */
+    position: relative;
+}
+
+.romantic-btn:hover {
+    background: #ff6fa3;
+    transform: scale(1.05);
+}
+
+/* Contenedor de botones */
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    z-index: 1000;
+    position: relative;
+}
+
+/* Popup */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* El popup es lo MÁS arriba */
+}
+
+.hidden {
+    display: none;
+}
+
+.popup-box {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    max-width: 350px;
+    text-align: center;
+    color: #d10062;
+    font-size: 20px;
+    box-shadow: 0 0 20px pink;
+}
+
+.romantic-btn.small {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 10px;
+}
